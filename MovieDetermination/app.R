@@ -19,6 +19,11 @@ ui <- fluidPage(
    sidebarLayout(
       sidebarPanel(
          textInput("title", "Movie Name:",""),
+         selectInput("genres","Genres", choices = list("Action" = 1, "Adventure" = 2,
+                     "Animation" = 3, "Drama" = 4, "Family" = 5, "Sci-Fi" = 6, "Crime" = 7, "Comedy" = 8,
+                     "Fantasy" = 9, "Biography" = 10, "Mystery" = 11, "Romance" = 12, "Thriller" = 13, "War" = 14,
+                     "Horror" = 15, "History" = 16, "Musical" = 17, "Western" = 18, "Sport" = 19, "Music" = 20, "Documentary" = 21)
+                     ,selected = 1),
 
          sliderInput("bins",
                      "Number of bins:",
