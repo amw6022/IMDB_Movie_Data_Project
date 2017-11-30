@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: STAT297iMDBProject\nType: Package\nTitle: Movie Determination Utility\nVersion: 0.1.0\nAuthor: Darragh Caruso, Tara Peng, Dylan Shoemaker, Aaron Wilhelm\nMaintainer: Aaron Wilhelm <aaronwilhelm15@gmail.com>\nDescription: More about what it does (maybe more than one line)\n    Use four spaces when indenting paragraphs within the Description.\nImports: \n  dplyr\n  ggvis\n  RSQLite\n  shiny\nLicense: Open Source (for noncommercial use only)\nEncoding: UTF-8\nLazyData: true\n",
+    "created" : 1512064186918.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3276163961",
+    "id" : "F2CD61ED",
+    "lastKnownWriteTime" : 1512064738,
+    "last_content_update" : 1512064738830,
+    "path" : "~/Documents/Spring semester 2017/Fall Semester 2017/group4_project/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}
