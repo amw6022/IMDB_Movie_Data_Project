@@ -6,6 +6,11 @@ Author: Darragh Caruso, Tara Peng, Dylan Shoemaker, Aaron Wilhelm
 Maintainer: Aaron Wilhelm <aaronwilhelm15@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
+Imports: 
+  dplyr
+  ggvis
+  RSQLite
+  shiny
 License: Open Source (for noncommercial use only)
 Encoding: UTF-8
 LazyData: true
