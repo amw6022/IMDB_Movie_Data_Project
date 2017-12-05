@@ -42,7 +42,11 @@ ui <- fluidPage(
          sliderInput("gross", "Gross Income:",
                      min = 150,
                      max = 800000000,
-                     value = c(250000000, 500000000))
+                     value = c(250000000, 500000000)),
+         sliderInput("imscore", "iMDB Score",
+                     min = 0,
+                     max = 10,
+                     value = c(3,5))
 
 
       ),
