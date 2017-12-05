@@ -4,7 +4,7 @@
 #
 # Find out more about building applications with Shiny here:
 #
-#    http://shiny.rstudio.com/
+#    http://shiny.rstudio.com/k
 #
 
 library(shiny)
