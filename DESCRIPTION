@@ -8,7 +8,10 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 Imports: 
   dplyr
+  dbplyr
+  DT
   ggvis
+  ggplot2
   RSQLite
   shiny
 License: Open Source (for noncommercial use only)

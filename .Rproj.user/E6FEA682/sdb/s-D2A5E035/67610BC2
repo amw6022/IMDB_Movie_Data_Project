@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#\n# This is a Shiny web application. You can run the application by clicking\n# the 'Run App' button above.\n#\n# Find out more about building applications with Shiny here:\n#\n#    http://shiny.rstudio.com/\n#\n\nlibrary(shiny)\nlibrary(ggplot2)\n\n\n# Define UI for application that draws a histogram\nui <- fluidPage(\n\n   # Application title\n   titlePanel(\"Movie Picking Tool (Prototype)\"),\n\n   # Sidebar with a slider input for number of bins\n   sidebarLayout(\n      sidebarPanel(\n         textInput(\"title\", \"Movie Name:\",\"\"),\n         checkboxGroupInput(\"genres\",\"Genres\", choices = list(\"Action\" = 1, \"Adventure\" = 2,\n                     \"Animation\" = 3, \"Drama\" = 4, \"Family\" = 5, \"Sci-Fi\" = 6, \"Crime\" = 7, \"Comedy\" = 8,\n                     \"Fantasy\" = 9, \"Biography\" = 10, \"Mystery\" = 11, \"Romance\" = 12, \"Thriller\" = 13, \"War\" = 14,\n                     \"Horror\" = 15, \"History\" = 16, \"Musical\" = 17, \"Western\" = 18, \"Sport\" = 19, \"Music\" = 20, \"Documentary\" = 21)\n                     ,selected = 1),\n         sliderInput(\"length\",\n                     \"Duration (by minute)\",\n                     min = 7,\n                     max = 511,\n                     value = 300),\n         radioButtons(\"rate\", \"Viewer Rating\", choices = list(\"G\" = 1, \"PG\" = 2,\n                        \"PG-13\" = 3, \"R\" = 4, \"TV-MA\" = 5, \"TV-14\" = 6, \"Not Rated\" = 7, \"Unrated\" = 8, \"Approved\" = 9,\n                        \"TV-Y7\" = 10, \"GP\" = 11, \"NC-17\" = 12, \"Passed\" = 13, \"TV-G\" = 14, \"TV-PG\" = 15, \"TV-Y\" = 16,\n                        \"X\" = 17)),\n         sliderInput(\"timeline\", \"Produced (by Year)\",\n                     min = 1950,\n                     max = 2020,\n                     value = 1980),\n         textInput(\"direct\", \"Director Name:\", value = \"\", width = NULL, placeholder = \"Steven Spielberg\"),\n         textInput(\"actor\", \"Actor Name:\", value = \"\", width = NULL, placeholder = \"Jim Carrey\"),\n         sliderInput(\"gross\", \"Gross Income:\",\n                     min = 150,\n                     max = 800000000,\n                     value = c(250000000, 500000000)),\n         sliderInput(\"imscore\", \"iMDB Score\",\n                     min = 0,\n                     max = 10,\n                     value = c(3,5))\n\n\n      ),\n\n      # Show a plot of the generated distribution\n      mainPanel(\n         plotOutput(\"distPlot\")\n      )\n   )\n)\n\n# Define server logic required to draw a histogram\nserver <- function(input, output) {\n\n  db <- read.csv(\"movie_metadata.csv\")\n\n}\n# Run the application\nshinyApp(ui = ui, server = server)\n\n",
+    "created" : 1512495303248.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2786155188",
+    "id" : "67610BC2",
+    "lastKnownWriteTime" : 1512497166,
+    "last_content_update" : 1512497166,
+    "path" : "~/Documents/Spring semester 2017/Fall Semester 2017/group4_project/MovieDetermination/ui.R",
+    "project_path" : "MovieDetermination/ui.R",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
