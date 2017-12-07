@@ -21,10 +21,10 @@ axis_vars <- c(
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  
+
   # Application title
   titlePanel("Movie Picking Tool (Prototype)"),
-  
+
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
@@ -60,11 +60,11 @@ ui <- fluidPage(
         "Optional: User may upload their own CSV file containing movie data. "
       )),
       fileInput('file1', 'Choose CSV File', multiple = TRUE,
-                accept=c('text/csv', 
-                         'text/comma-separated-values,text/plain', 
+                accept=c('text/csv',
+                         'text/comma-separated-values,text/plain',
                          '.csv'))
     ),
-    
+
     # Show a plot of the generated distribution
     mainPanel(
       DT::dataTableOutput("contents")
@@ -80,47 +80,62 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- shinyServer(function(input, output,session){
-  
+
   data <- reactive({
-    
-    inFile <- input$file1 
-    
+
+    inFile <- input$file1
+
     if (is.null(inFile)) {
       # Read movie_data
       movie_data <- read.csv("C:\\Users\\tarap\\Documents\\Academics\\SEMESTER 7\\STAT 297\\group4_project\\movie_metadata.csv")
+      movies <- data.frame(movie_data$movie_title, movie_data$duration, movie_data$genres, movie_data$country,
+                           movie_data$content_rating, movie_data$gross, movie_data$plot_keywords, movie_data$title_year,
+                           movie_data$budget, movie_data$movie_facebook_likes, movie_data$director_name, movie_data$director_facebook_likes,
+                           movie_data$actor_1_name, movie_data$actor_2_name, movie_data$actor_3_name, movie_data$cast_total_facebook_likes,
+                           movie_data$num_voted_users, movie_data$num_user_for_reviews, movie_data$num_critic_for_reviews, movie_data$imdb_score,
+                           movie_data$movie_imdb_link)
+
     } else {
       # Read user csv input data
-      inFile <- input$file1 
+      inFile <- input$file1
       movie_data <- read.csv(inFile$datapath, header = input$header, sep = input$sep,
                              quote = input$quote)
+      movies <- data.frame(movie_data$movie_title, movie_data$duration, movie_data$genres, movie_data$country,
+                           movie_data$content_rating, movie_data$gross, movie_data$plot_keywords, movie_data$title_year,
+                           movie_data$budget, movie_data$movie_facebook_likes, movie_data$director_name, movie_data$director_facebook_likes,
+                           movie_data$actor_1_name, movie_data$actor_2_name, movie_data$actor_3_name, movie_data$cast_total_facebook_likes,
+                           movie_data$num_voted_users, movie_data$num_user_for_reviews, movie_data$num_critic_for_reviews, movie_data$imdb_score,
+                           movie_data$movie_imdb_link)
     }
-    
+
     # Update inputs (you could create an observer with both updateSel...)
     # You can also constraint your choices. If you wanted select only numeric
     # variables you could set "choices = sapply(df, is.numeric)"
     # It depends on what you want to do later on.
-    
+
+    # "Empty inputs" - they will be updated after the data is uploaded
+
     updateSelectInput(session, inputId = 'xcol', label = 'X Variable',
                       choices = names(movie_data), selected = names(movie_data))
     updateSelectInput(session, inputId = 'ycol', label = 'Y Variable',
                       choices = names(movie_data), selected = names(movie_data)[2])
-    
+
     return(movie_data)
-    
-    
+
+
     # Define side panel categories
     # categories <- names(movie_data)
-    
+
     # output$Plot <- renderPlot({
-    
+
     # plot(movie_data$genres, movie_data$duration)
-    
+
   })
-  
+
   output$contents <- renderDataTable({
     data()
   })
-  
+
 })
 
 
