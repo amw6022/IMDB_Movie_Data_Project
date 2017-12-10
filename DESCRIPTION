@@ -10,10 +10,11 @@ Imports:
   dplyr
   dbplyr
   DT
-  ggvis
   ggplot2
+  ggvis
   RSQLite
   shiny
+  stat297
 License: Open Source (for noncommercial use only)
 Encoding: UTF-8
 LazyData: true
