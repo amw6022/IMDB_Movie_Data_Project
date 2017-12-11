@@ -1,6 +1,10 @@
 {
-    "path" : "~/Documents/Spring semester 2017/Fall Semester 2017/group4_project/inst",
+    "path" : "~/Documents/Spring semester 2017/Fall Semester 2017/group4_project/moviefinderinfo",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 3
+        },
         {
             "ascending" : true,
             "columnIndex" : 2
