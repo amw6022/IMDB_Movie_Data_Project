@@ -16,7 +16,7 @@ library(DT)
 ui <- fluidPage(
 
    # Application title
-   titlePanel("Movie Picking Tool (Prototype)"),
+   titlePanel("Movie Picking Tool"),
 
    # Sidebar with a slider input for number of bins
    sidebarLayout(
@@ -30,7 +30,7 @@ ui <- fluidPage(
                      min = 1950,
                      max = 2020,
                      value = c(1975, 2015)),
-         
+
          sliderInput("length",
                      "Duration (by minute)",
                      min = 7,
@@ -66,7 +66,7 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output,session){
-  
+
   data = data = read.csv('movie_metadata.csv', header=TRUE)
   y = c(rep(NA, dim(data)[1]))
   for (i in 1:dim(data)[1]){
@@ -88,7 +88,7 @@ server <- function(input, output,session){
     maxGross = input$gross[2]
     minRating = input$imscore[1]
     maxRating = input$imscore[2]
-    
+
     filter_data = filter(data,
                          duration >= minDuration,
                          duration <= maxDuration,
@@ -98,7 +98,7 @@ server <- function(input, output,session){
                          gross <= maxGross,
                          imdb_score >= minRating,
                          imdb_score <= maxRating)
-    
+
     if(!is.null(input$actor) && input$actor !=''){
       actor = paste0('%', input$actor, '%')
       filtered_data = filter(filtered_data, actor_1_name %like% actor |
@@ -107,7 +107,7 @@ server <- function(input, output,session){
     filter_data = as.data.frame(filter_data)
     filter_data
       })
-  
+
   movie_info = function(x){
     if (is.null(x)) return (NULL)
     if (is.null(x$id)) return(NULL)
@@ -117,7 +117,7 @@ server <- function(input, output,session){
            movie$imdb_score, '<br>',
            '$', format(movie$budget, big.mark = ',', scientific=FALSE))
   }
-  
+
   intervis = reactive({
     #s1 = input$x1_rows_current
     #new_movies = movies()
@@ -126,7 +126,7 @@ server <- function(input, output,session){
     #  new_movies[i,'selected'] = (new_movies[i,'id'] %in% s1)
     #}
     vis = ggvis(movies(), x=~imdb_score, y=~budget, key:=~id) %>%
-      layer_points(size:=50, size.hover:=200, 
+      layer_points(size:=50, size.hover:=200,
                    fillOpacity:=0.2, fillOpacity.hover:=0.5, key:=~id, fill:='#9932CC') %>%
       add_tooltip(movie_info, 'hover') %>%
       add_tooltip(movie_link, 'click') %>%
@@ -136,11 +136,11 @@ server <- function(input, output,session){
 #                    range = c('#1db954','#fd5c63')) %>%
       set_options(width=500, height=500)
   })
-  
+
   #myvars = names(isolate(movies())) %in% c('movie_title', 'duration', 'gross', 'title_year', 'imdb_score')
   #new = isolate(movies())[myvars]
   #colnames(new) = c('Title', 'Duration (mins)', 'Gross ($)', 'Year', 'Rating')
-  
+
   new_table = reactive({
     temp = movies()
     new = cbind(temp$movie_title, temp$duration, temp$gross, temp$title_year, temp$imdb_score)
@@ -154,7 +154,7 @@ server <- function(input, output,session){
     DT::datatable(new_data, escape=FALSE)
   })
   bind_shiny(intervis, 'distPlot')
-  
+
 #  output$txt = renderText({
 #    as.character(reactiveValuesToList(input)[16])
 #  })
