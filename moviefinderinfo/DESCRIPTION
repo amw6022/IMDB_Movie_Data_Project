@@ -1,0 +1,16 @@
+Package: moviefinderinfo
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Authors@R: c(
+    person("Dylan", "Shoemaker", role = c("aut","cre")),
+    person("Aaron", "Wilhelm", role = "aut"),
+    person("Darragh", "Caruso", role = "aut"),
+    person("Tara", "Peng", role = "aut")
+    )
+Maintainer: The package maintainer <dbs5306@psu.edu>
+Description: This package allows the user to add tooltip text to points on their interactive plot containing movie information. 
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
