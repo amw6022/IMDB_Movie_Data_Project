@@ -4,8 +4,10 @@ Title: Movie Determination Utility
 Version: 0.1.0
 Author: Darragh Caruso, Tara Peng, Dylan Shoemaker, Aaron Wilhelm
 Maintainer: Aaron Wilhelm <aaronwilhelm15@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: A tool designed to determine a suitable movie for a user.
+    The user may filter through different options to choose a movie.
+    Once a movie is chosen, it can be clicked on and the user is then directed
+    to the movie's iMBd page. 
 Imports: 
   dplyr
   dbplyr
